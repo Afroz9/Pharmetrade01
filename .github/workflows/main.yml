@@ -46,8 +46,7 @@ jobs:
             IMAGE="490457333469.dkr.ecr.us-east-1.amazonaws.com/jaisai_afroz"
             CONTAINER="serverupc-container"
 
-            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 925623962804.dkr.ecr.ap-south-2.amazonaws.com
-
+            aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 490457333469.dkr.ecr.us-east-1.amazonaws.com/jaisai_afroz
             docker ps -a --format '{{.Names}}' | grep -w $CONTAINER && docker rm -f $CONTAINER || true
             docker pull $IMAGE
             docker run -d -p 3000:3000 --name $CONTAINER $IMAGE
